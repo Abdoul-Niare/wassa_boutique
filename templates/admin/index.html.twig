@@ -1,0 +1,60 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+	{{ parent() }}
+
+	<main class="main-container">
+		<div class="main-title">
+			<p class="fw-600">Tableau de board</p>
+		</div>
+
+		<div class="main-cards">
+			<div class="card">
+				<div class="card-inner">
+					<p class="text-yellow">Prouduit</p>
+					<span class="material-icons-outlined text-yellow" title="Wassa Boutique">
+						folder_open
+					</span>
+				</div>
+				<span class="text-primary fw-600">684</span>
+			</div>
+			<div class="card">
+				<div class="card-inner">
+					<p class="text-red">Categories</p>
+					<span class="material-icons-outlined text-red" title="Wassa Boutique">
+						folder_open
+					</span>
+				</div>
+				<span class="text-primary fw-600">684</span>
+			</div>
+			<div class="card">
+				<div class="card-inner">
+					<p class="text-turc">Les arrivages</p>
+					<span class="material-icons-outlined text-turc" title="Wassa Boutique">
+						folder_open
+					</span>
+				</div>
+				<span class="text-primary fw-600">684</span>
+			</div>
+			<div class="card">
+				<div class="card-inner">
+					<p class="text-indigo">Stock Produit</p>
+					<span class="material-icons-outlined text-indigo" title="Wassa Boutique">
+						folder_open
+					</span>
+				</div>
+				<span class="text-primary fw-600">684</span>
+			</div>
+		</div>
+		<div class="charts">
+			<div class="charts-card">
+				<p class="chart-title">Meilleurs ventes</p>
+				<div id="chart-bar"></div>
+			</div>
+			<div class="charts-card">
+				<p class="chart-title">Ventes et rejets</p>
+				<div id="chart-area"></div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

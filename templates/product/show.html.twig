@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <h1>Product</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ product.code }}</td>
+            </tr>
+            <tr>
+                <th>Added_date</th>
+                <td>{{ product.addedDate ? product.addedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_date</th>
+                <td>{{ product.updatedDate ? product.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Picture1</th>
+                <td>{{ product.picture1 }}</td>
+            </tr>
+            <tr>
+                <th>Picture2</th>
+                <td>{{ product.picture2 }}</td>
+            </tr>
+            <tr>
+                <th>Picture3</th>
+                <td>{{ product.picture3 }}</td>
+            </tr>
+            <tr>
+                <th>Picture4</th>
+                <td>{{ product.picture4 }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Dozen_price</th>
+                <td>{{ product.dozenPrice }}</td>
+            </tr>
+            <tr>
+                <th>Nb_dozen</th>
+                <td>{{ product.nbDozen }}</td>
+            </tr>
+            <tr>
+                <th>Nb_total</th>
+                <td>{{ product.nbTotal }}</td>
+            </tr>
+            <tr>
+                <th>Public_price</th>
+                <td>{{ product.publicPrice }}</td>
+            </tr>
+            <tr>
+                <th>Promos_price</th>
+                <td>{{ product.promosPrice }}</td>
+            </tr>
+            <tr>
+                <th>Discount_rate</th>
+                <td>{{ product.discountRate }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_index') }}">back to list</a>
+
+    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+
+    {{ include('product/_delete_form.html.twig') }}
+{% endblock %}

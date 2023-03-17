@@ -1,0 +1,139 @@
+/* Add a gray background color and some padding to the footer */
+
+body {
+  height: 100%;
+}
+
+@font-face{
+    font-family:"AndikaNewBasic-Regular";
+    src:url("./webfonts/AndikaNewBasic-Regular.ttf");
+    font-weight: normal;
+    font-style:normal;
+}
+@font-face{
+    font-family:"fa-brands-400";
+    src:url("./webfonts/fa-brands-400.ttf");
+}
+/*cursive*/
+
+* {
+    font-family: "AndikaNewBasic-Regular",cursive;
+ }
+ 
+/*Navbar style*/
+header>nav{
+    /*background-color: RGB(18, 65, 145);*/
+    background-color: #F2F2F2;
+}
+
+.navbar-brand{
+    font:cursive;
+    color: red;
+}
+
+.navbar-nav li a{
+    color:#5882FA;
+}
+
+.navbar-nav li a.login-style{
+    color:#BA4A00; 
+}
+
+li.nav-item{
+    transition: border-width 1s ease;
+    transition: border-color 1.5s ease;
+}
+
+li.nav-item:hover{
+    border-style: solid none solid none;
+    border-color :#2E64FE;
+    border-width: 2px;
+}
+
+li.nav-item.active{
+    border-style: none none solid none;
+    background-color: #F39C12;
+    border-color :#2E64FE;
+    border-width: 3px;
+}
+
+li.nav-item.active a{
+    color:black;
+}
+
+/* Make the image fully responsive */
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-caption h3{
+    color : #E84D0A;
+}
+
+.carousel-caption p{
+    color : #E84D0A;
+}
+img.product-img{
+    width: 50%; 
+    margin: auto;
+    display: block;
+    margin-left: auto;
+    margin-left: auto;    
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 25px;
+}
+
+.carousel-inner img {
+  width: 80%; /* Set width to 100% */
+  min-height: 200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+  .carousel-caption {
+	display: none; 
+  }
+}
+
+.wassa-center {
+  margin: auto;
+  width: 80%;
+  padding: 5px;
+}
+
+.normal-center {
+  margin: auto;
+  width: 100%;
+}
+
+.wassa-div{
+    margin:15px;
+}
+
+.wassa-link{
+  cursor: pointer;
+}
+
+.styled-link{
+  text-decoration: underline;
+  cursor:auto;
+}
+
+.wassa-border{
+    border: 1px solid black;
+}
+
+.wassa-hr{
+    height:2px;
+    border-width:0;
+    color:gray;
+    background-color:gray
+}
+
+.error {
+    color: red;
+}
