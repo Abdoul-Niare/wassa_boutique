@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Product{% endblock %}
+{% block title %}New Product
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Product</h1>
+	<div style="width: 60%;margin: auto;">
+		<h4 class="page-header">Ajout d'un nouveau produit</h4>
 
-    {{ include('product/_form.html.twig') }}
+		{{ include('product/_form.html.twig') }}
 
-    <a href="{{ path('app_product_index') }}">back to list</a>
+		<a href="{{ path('app_product_index') }}" class="btn btn-primary">Annuler</a>
+	</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+	<script src="{{ asset('js/form.js') }}"></script>
 {% endblock %}

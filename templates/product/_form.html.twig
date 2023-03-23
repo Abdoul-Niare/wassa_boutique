@@ -1,4 +1,20 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+     {{ form_errors(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.code) }}
+    {{ form_row(form.category) }}
+    {{ form_row(form.nbDozen) }}
+    {{ form_row(form.nbTotal) }}
+    {{ form_row(form.price) }}   
+    {{ form_row(form.dozenPrice) }}
+    {{ form_row(form.publicPrice) }}
+    {# {{ form_row(form.onDiscount) }} #}
+    {{ form_row(form.promosPrice) }}
+    {{ form_row(form.discountRate) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.document1) }}
+    {{ form_row(form.document2) }}
+    {{ form_row(form.document3) }}
+    {{ form_row(form.document4) }}
+    {{ form_row(form.submit, {label_attr: {class: 'btn btn-success'} }) }} 
 {{ form_end(form) }}

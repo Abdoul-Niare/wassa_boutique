@@ -18,7 +18,7 @@ function ToggleSidebar() {
 }
 let options = {
     series: [{
-        data: [400, 430, 448, 470, 540]
+        data: [410, 430, 448, 470, 540]
     }],
     chart: {
         type: 'bar',

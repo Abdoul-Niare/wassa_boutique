@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -37,6 +38,61 @@ class ProductRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    
+    /**
+     * @return Product[]
+     */
+    public function findAllOfCategory($category): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Product p
+            INNER JOIN p.category c
+            WHERE c.name :category
+            ORDER BY p.price ASC'
+        )->setParameter(Category, $category);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
+    
+    /**
+     * @return Product[]
+     */
+    public function findNewProducts(): array
+    {
+        $entityManager = $this->getEntityManager();
+        $today = new \DateTime();
+        $dateSubMonth = $today->sub(new \DateInterval('P2M'));
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Product p
+            WHERE p.addedDate >= :pAddedDate
+            ORDER BY p.addedDate ASC'
+        )->setParameter('pAddedDate', $dateSubMonth);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
+    
+    public function findProductsInPromotion(): array
+    {
+        $entityManager = $this->getEntityManager();
+        $today = new \DateTime();
+        $dateSubMonth = $today->sub(new \DateInterval('P2M'));
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Product p
+            WHERE p.onDiscount = :pInDiscount
+            ORDER BY p.addedDate ASC'
+        )->setParameter('pInDiscount', true);
+
+        // returns an array of Product objects
+        return $query->getResult();
     }
 
 //    /**

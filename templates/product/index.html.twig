@@ -3,63 +3,78 @@
 {% block title %}Product index{% endblock %}
 
 {% block body %}
-    <h1>Product index</h1>
 
-    <table class="table">
+        <div style="width: 85%;margin: auto; padding: 20px">
+    <h4>Liste des Produits</h4>
+
+    <table class="table table-striped table-bordered">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Code</th>
-                <th>Added_date</th>
-                <th>Updated_date</th>
-                <th>Picture1</th>
-                <th>Picture2</th>
-                <th>Picture3</th>
-                <th>Picture4</th>
-                <th>Description</th>
-                <th>Dozen_price</th>
-                <th>Nb_dozen</th>
-                <th>Nb_total</th>
-                <th>Public_price</th>
-                <th>Promos_price</th>
-                <th>Discount_rate</th>
-                <th>actions</th>
+           <tr>
+                <th scope="col">N°-Code</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Nb Douzaine</th>
+                <th scope="col">Nb total</th>
+                <th scope="col">Prix&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;(Fcfa)</th>
+                <th scope="col">Image</th>
+                <th scope="col">Date d'ajout</th>
+                <th scope="col">Mis à jour</th>
+                <th scope="col"> Actions</th> 
             </tr>
         </thead>
         <tbody>
         {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
+             <tr>
+                <th scope="row">{{ loop.index }}-{{ product.code }}</th>
                 <td>{{ product.name }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.code }}</td>
-                <td>{{ product.addedDate ? product.addedDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ product.updatedDate ? product.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ product.picture1 }}</td>
-                <td>{{ product.picture2 }}</td>
-                <td>{{ product.picture3 }}</td>
-                <td>{{ product.picture4 }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.dozenPrice }}</td>
                 <td>{{ product.nbDozen }}</td>
                 <td>{{ product.nbTotal }}</td>
-                <td>{{ product.publicPrice }}</td>
-                <td>{{ product.promosPrice }}</td>
-                <td>{{ product.discountRate }}</td>
                 <td>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+                    {% if product.price %}
+                        <div class='row'>
+                            <div class='col'><u>Unit.</u></div>
+                            <div class='col'> {{ product.price }} </div>
+                        </div>
+                    {% endif %}
+                    {% if product.dozenPrice %} 
+                        <div class='row'>
+                            <div class='col'><u>Douz.</u></div>
+                            <div class='col'>{{ product.dozenPrice }}</div>
+                        </div>
+                    {% endif %}
+                     {% if product.publicPrice %} 
+                        <div class='row'>
+                            <div class='col'><u>Public:</u> </div>
+                            <div class='col'>{{ product.dozenPrice }} </div>
+                        </div>
+                    {% endif %}
+                     {% if product.promosPrice %}
+                         <div class='row'>
+                             <div class='col'><u>Promos : </u></div> 
+                             <div class='col'>{{ product.promosPrice }}</div>
+                         </div>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if product.picture1 %}
+                        <img src="{{ asset('images/products/'~product.picture1) }}" style="width: 100px;height: 100px;" class='img-thumbnail' alt='image 1'/>
+                    {% endif %}
+                </td>
+                <td>{{ product.addedDate ? product.addedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ product.updatedDate ? product.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_product_show', {'id': product.id}) }}"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('app_product_edit', {'id': product.id}) }}"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="18">no records found</td>
+                <td colspan="18">aucun enregistrement n'a été trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_product_new') }}">Create new</a>
+    <a href="{{ path('app_product_new') }}">Ajouter</a>
+
+    </div>
 {% endblock %}

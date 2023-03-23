@@ -24,11 +24,15 @@ class CommandeController extends AbstractController
     #[Route('/new', name: 'app_commande_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CommandeRepository $commandeRepository): Response
     {
+        $wassaUser = $this->getUser();
         $commande = new Commande();
+        $commande ->setWassaUser($wassaUser);
         $form = $this->createForm(CommandeType::class, $commande);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
             $commandeRepository->save($commande, true);
 
             return $this->redirectToRoute('app_commande_index', [], Response::HTTP_SEE_OTHER);

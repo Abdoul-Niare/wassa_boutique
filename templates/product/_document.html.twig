@@ -1,0 +1,57 @@
+<div class="row">
+	<div class="col-md-6">
+		{{ form_row(form.document1) }}
+	</div>
+	<div class="col-md-4">
+		{% if(product.picture1) %}
+			<div class="manageImageDiv" data-download-url="{{ path('download_product_img') }}" data-delete-url="{{ path('delete_product_image') }}" data-filename="{{ product.image1 }}" data-id="{{ product.id }}">
+				<i class="fas fa-file-image downloadFile wassa-link" title="Voir l'image"></i>
+				&nbsp;&nbsp;
+				<i class="fas fa-trash-alt deleteFile wassa-link" title="Supprimer l'image"></i>
+			</div>
+		{% endif %}
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		{{ form_row(form.document2) }}
+	</div>
+	<div class="col-md-4">
+		{% if(product.picture2) %}
+			<div class="manageImageDiv" data-download-url="{{ path('download_product_img') }}" data-delete-url="{{ path('delete_product_image') }}" data-filename="{{ product.image2 }}" data-id="{{ product.id }}">
+				<i class="fas fa-file-image downloadFile wassa-link" title="Voir l'image"></i>
+				&nbsp;&nbsp;
+				<i class="fas fa-trash-alt deleteFile wassa-link" title="Supprimer l'image"></i>
+			</div>
+		{% endif %}
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		{{ form_row(form.document3) }}
+	</div>
+	<div class="col-md-4">
+		{% if(product.picture3) %}
+			<div class="manageImageDiv" data-download-url="{{ path('download_product_img') }}" data-delete-url="{{ path('delete_product_image') }}" data-filename="{{ product.image3 }}" data-id="{{ product.id }}">
+				<i class="fas fa-file-image downloadFile wassa-link" title="Voir l'image"></i>
+				&nbsp;&nbsp;
+				<i class="fas fa-trash-alt deleteFile wassa-link" title="Supprimer l'image"></i>
+			</div>
+		{% endif %}
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		{{ form_row(form.document4) }}
+	</div>
+	<div class="col-md-4">
+		{% if(product.picture4) %}
+			<div class="manageImageDiv" data-download-url="{{ path('download_product_img') }}" data-delete-url="{{ path('delete_product_image') }}" data-filename="{{ product.image4 }}" data-id="{{ product.id }}">
+				<i class="fas fa-file-image downloadFile wassa-link" title="Voir l'image"></i>
+				&nbsp;&nbsp;
+				<i class="fas fa-trash-alt deleteFile wassa-link" title="Supprimer l'image"></i>
+			</div>
+		{% endif %}
+	</div>
+</div>
+</div>

@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-info">
+{# <nav class="navbar navbar-expand-lg bg-info">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/">Accueil <i class="fa-brands fa-facebook"></i></a>
+		<a class="navbar-brand" href="/">Wassa-Boutique</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -9,9 +9,9 @@
 			<div class="navbar-nav">
 				{% if app.user %}
 					{# <li class="nav-item">
-						<a class="nav-link" href="{{path('app_profile')}}">Mon Profil</a>
-					</li> #}
-					<li class="nav-item">
+							<a class="nav-link" href="{{path('app_profile')}}">Mon Profil</a>
+						</li> #}
+					{# <li class="nav-item">
 						<a class="nav-link" href="{{path('app_logout')}}">se deconnecter</a>
 					</li>
 					<li class="nav-item">
@@ -28,5 +28,80 @@
 
 			</div>
 		</div>
+	</div>
+</nav> #}
+
+
+<nav class="navbar navbar-expand-sm">
+	<a
+		class="navbar-brand" href="/">
+		<!-- style="width:120px;height: 35px;" -->
+		<img src="{{ asset('images/others/logoWassa3.png') }}" style="margin:0;padding: 0" alt="Wassa Boutique"/>
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span>
+			<i class="fas fa-bars"></i>
+		</span>
+	</button>
+	<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+		<ul class="navbar-nav">
+			<li class="{{ app.request.get('_route') == 'welcome' ? 'nav-item active' : 'nav-item' }}">
+				<a class="nav-link" href="/">ACCUEIL<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="{{ app.request.get('_route') == 'wassa_products' ? 'nav-item active' : 'nav-item' }}">
+				<a class="nav-link" href="{{ path('app_product_index') }}">NOS PRODUITS</a>
+			</li>
+			<li class="{{ app.request.get('_route') == 'wassa_arrivages' ? 'nav-item active arrivage-active' : 'nav-item' }}">
+				<a class="nav-link" href="{{ path('app_commande_index') }}">ARRIVAGES</a>
+			</li>
+			<li class="{{ app.request.get('_route') == 'wassa_contact' ? 'nav-item active' : 'nav-item' }}">
+				<a class="nav-link" href="/">CONTACT</a>
+			</li>
+			<li class="{{ app.request.get('_route') == 'wassa_promos' ? 'nav-item active' : 'nav-item' }}">
+				<a class="nav-link" href="{{path('app_login')}}">Se connecter</a>
+			</li>
+			<li class="{{ app.request.get('_route') == 'wassa_promos' ? 'nav-item active' : 'nav-item' }}">
+				<a class="nav-link"href="{{path('app_register')}}">S'inscrire</a>
+			</li>
+			
+			{% if app.user %}
+				{# {% if is_granted('ROLE_ADMIN') %} #}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('wassa_admin') }}">Menu ADMIN</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{path('app_logout')}}">se deconnecter</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/">Panier</a>
+					</li>
+				{# {% endif %} #}
+				{# <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle login-style" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Bienvenue
+						{% if app.user.firstName is defined %}
+							{{ app.user.firstName }}
+						{% else %}
+							{{ app.user.email }}
+						{% endif %}
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					
+						<a class="dropdown-item login-style" href="{{ path('app_logout') }}">Se d&eacute;connecter</a>
+						{# <a class="dropdown-item login-style" href="{{ path('edit_my_infos') }}">Mes infos personnelles</a> #}
+					{# </div>
+				</li> #}
+			{# {% else %}
+				<li>
+					<a class="nav-link login-style" href="{{ path('app_login') }}">
+						<span>
+							<i class="fas fa-sign-in-alt"></i>
+						</span>
+						<span>&nbsp;Mon compte</span>
+					</a>
+				</li> #}
+			{% endif %}
+		</ul>
 	</div>
 </nav>

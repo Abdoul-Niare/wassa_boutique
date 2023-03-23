@@ -7,9 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
-class Product
+class Product extends EntityBase
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -71,7 +72,7 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: LigneCommande::class)]
     private Collection $lignecommandes;
 
-   
+
     public function __construct()
     {
         $this->lignecommandes = new ArrayCollection();
@@ -286,6 +287,11 @@ class Product
         return $this;
     }
 
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     /**
      * @return Collection<int, LigneCommande>
      */
@@ -314,5 +320,65 @@ class Product
         }
 
         return $this;
+    }
+
+
+    public function setProductImages(string $destinationDir, \Symfony\Component\Form\FormInterface $currentForm, array $errors_list)
+    {
+
+        $fileName = "";
+        $currentFile = null;
+        try {
+
+            $errors_list[] = "Error list test";
+
+            if ($currentForm['document1']->getData()) {
+                $currentFile = $currentForm['document1']->getData();
+                $fileName = $this->generateUniqueFileName() . '.' . $currentFile->guessExtension();
+
+                //$res = move_uploaded_file($fileName, $destinationDir.'/'.$fileName);
+                //var_dump($res);
+
+                if ($this->copyImageFileTo($currentFile, $destinationDir, $fileName)) {
+                    $this->setPicture1($fileName);
+                } else {
+                    $errors_list[] = "Error lors du chargement de l'image1";
+                }
+            }
+
+            if ($currentForm['document2']->getData()) {
+                $currentFile = $currentForm['document2']->getData();
+                $fileName = $this->generateUniqueFileName() . '.' . $currentFile->guessExtension();
+                if ($this->copyImageFileTo($currentFile, $destinationDir, $fileName)) {
+                    $this->setPicture2($fileName);
+                } else {
+                    $errors_list[] = "Error lors du chargement de l'image2";
+                }
+            }
+
+            if ($currentForm['document3']->getData()) {
+                $currentFile = $currentForm['document3']->getData();
+                $fileName = $this->generateUniqueFileName() . '.' . $currentFile->guessExtension();
+                if ($this->copyImageFileTo($currentFile, $destinationDir, $fileName)) {
+                    $this->setPicture3($fileName);
+                } else {
+                    $errors_list[] = "Error lors du chargement de l'image3";
+                }
+            }
+
+            if ($currentForm['document4']->getData()) {
+                $currentFile = $currentForm['document4']->getData();
+                $fileName = $this->generateUniqueFileName() . '.' . $currentFile->guessExtension();
+                if ($this->copyImageFileTo($currentFile, $destinationDir, $fileName)) {
+                    $this->setPicture4($fileName);
+                } else {
+                    $errors_list[] = "Error lors du chargement de l'image4";
+                }
+            }
+        } catch (Exception $ex) {
+            $errors_list[] = $ex->getMessage();
+        }
+
+        return $errors_list;
     }
 }

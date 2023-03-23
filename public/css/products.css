@@ -1,0 +1,17 @@
+.productCategoryDiv{
+    width: 100%;
+    padding: 1px;
+    border-radius: 1px; 
+    /*border: #000 solid 1px;*/ 
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.productCategoryText{
+    padding: 0;
+    text-decoration-color: #000;
+    font-size: 18px;
+    font-family: fantasy;
+    background-color: #517EB9;
+}
+

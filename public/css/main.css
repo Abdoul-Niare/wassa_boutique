@@ -4,6 +4,10 @@ body {
   height: 100%;
 }
 
+.container{
+  min-height: 80vh;
+}
+
 @font-face{
     font-family:"AndikaNewBasic-Regular";
     src:url("./webfonts/AndikaNewBasic-Regular.ttf");
