@@ -1,0 +1,77 @@
+{# templates/home/contact.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact - Wassa Boutique{% endblock%}
+
+{% block stylesheets %}
+ {{ parent() }}
+ <link href="{{ asset('css/contact.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+
+<div class="container">
+    <div>
+        <div id="contactAdress">
+            <span style="text-height: max-size; font-size: 18px;"> 
+                Immeuble Malimag Boutique N° 397 <br/>
+                B.P.E.:5364 - Tel: +223-20 22 79 15. Cell: +223-66 74 16 45 <br/>
+                Bamako - R&eacute;p. du Mali
+            </span>
+            <br/>
+        </div>
+        {% if(confirm_sent) %}
+            <div class="alert alert-info">
+                <strong>Info!</strong> 
+                Votre message a bien été prise en compte.<br/>
+                Notre e&acute;quipe va tout mettre en oeuvre pour vous repondre dans les plus brefs delais.
+            </div>    
+        {% else %}
+            <div id="contactMessage" style="margin-top: 20px;">
+                <p style="text-height: max-size; font-size: 15px;">
+                    Vous pouvez nous &eacute;crire en remplissant ce formulaire.<br/>
+                    Nous nous efforceront de vous r&eacute;pondre dans les plus brefs d&eacute;lais.
+                </p>
+            </div>
+            <div id="contactForm">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.name) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.email) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.phone) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ form_row(form.subject) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.message) }}
+                    </div>
+                </div>
+                {# <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.captcha) }}
+                    </div>
+                </div> #}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.send, {label_attr: {class: 'btn btn-success'} }) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
